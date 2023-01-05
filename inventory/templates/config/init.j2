@@ -1,0 +1,19 @@
+!
+logging buffered {{ LOGGIN_BUFFERED }}
+logging console informational
+logging monitor informational
+logging synchronous level all
+!
+service routing protocols model multi-agent
+!
+hostname {{ SWITCH.HOSTNAME }}
+!
+vrf instance {{ MGMT_VRF }}
+!
+interface {{ MGMT_INTERFACE }}
+	vrf {{ MGMT_VRF }}
+	ip address {{ SWITCH.HOST_IP }}/24
+!
+username ansible privilege 15 secret ansible
+!
+ip route vrf {{ MGMT_VRF }} 0.0.0.0/0 {{ MGMT_GW }}

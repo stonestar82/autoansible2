@@ -1,0 +1,41 @@
+all:
+  children:
+    FABRIC:
+      children:
+        D1:
+          children:
+            PODS:
+              children:
+                D1_SPINES:
+                  vars:
+                    type: spine
+                  hosts:
+                    D1-Spine-01:
+                      ansible_host: 192.168.22.191
+                    D1-Spine-02:
+                      ansible_host: 192.168.22.192
+                D1_L3LEAFS:
+                  vars:
+                    type: l3leaf
+                  hosts:
+                    D1-Leaf-01:
+                      ansible_host: 192.168.22.193
+                    D1-Leaf-02:
+                      ansible_host: 192.168.22.194
+                    D1-Leaf-03:
+                      ansible_host: 192.168.22.195
+                    D1-Leaf-04:
+                      ansible_host: 192.168.22.196
+                    D1-BL-01:
+                      ansible_host: 192.168.22.197
+                    D1-BL-02:
+                      ansible_host: 192.168.22.198
+              vars:
+                ansible_connection: network_cli
+                ansible_network_os: eos
+                ansible_become: true
+                ansible_user: ansible
+                ansible_ssh_pass: ansible
+                ansible_become_method: enable
+                ansible_httpapi_use_ssl: false
+                ansible_httpapi_validate_certs: false

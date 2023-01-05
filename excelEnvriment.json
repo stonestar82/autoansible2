@@ -1,0 +1,104 @@
+{
+  "all": {
+    "fabricName": {"sheet": "Var", "p": "B2", "mapping":"fabric_name", "defaultValue": "DC"},
+    "mgmtInterface": {"sheet": "Var", "p": "Z9999", "mapping":"mgmt_interface", "defaultValue": "Management1"},
+    "mgmtInterfaceVrf": {"sheet": "Var", "p": "B8", "mapping":"mgmt_interface_vrf", "defaultValue": "MGMT"},
+    "managementGateway": {"sheet": "Var", "p": "B9", "mapping":"mgmt_gateway", "defaultValue": "192.168.22.251"},
+    "adminName": {"sheet": "Var", "p": "B13", "mapping":"admin_name", "defaultValue": "admin"},
+    "adminPassword": {"sheet": "Var", "p": "B14", "mapping":"admin_info", "defaultValue": ""},
+    "privilege": {"sheet": "Var", "p": "B15", "mapping":"admin_privilege", "defaultValue": "15"},
+    "ansibleName": {"sheet": "Var", "p": "Z9999", "mapping":"ansible_name", "defaultValue": "ansible"},
+    "ansiblePassword": {"sheet": "Var", "p": "Z9999", "mapping":"ansible_info", "defaultValue": "ansible"},
+    "logginBufferedLevel": {"sheet": "Var", "p": "B5", "mapping":"loggin_buffered_level", "defaultValue": "1000"},
+    "logginConsole": {"sheet": "Var", "p": "Z9999", "mapping":"loggin_console", "defaultValue": "informational"},
+    "logginMonitor": {"sheet": "Var", "p": "Z9999", "mapping":"loggin_monitor", "defaultValue": "informational"},
+    "logginSynchronous": {"sheet": "Var", "p": "Z9999", "mapping":"loggin_sychronous", "defaultValue": "all"},
+    "terminalLength": {"sheet": "Var", "p": "B3", "mapping":"terminal_length", "defaultValue": "40"},
+    "terminalWidth": {"sheet": "Var", "p": "B4", "mapping":"terminal_width", "defaultValue": "200"},
+    "timeZone": {"sheet": "Var", "p": "B11", "mapping":"time_zone", "defaultValue": "Asia/Seoul"},
+    "spanningTreeMode": {"sheet": "Var", "p": "B7", "mapping":"spanning_tree_mode", "defaultValue": "None"},
+    "bgpMaximumPaths": {"sheet": "Var", "p": "Z9999", "mapping":"bgp_maximum_paths", "defaultValue": "8"},
+    "bgpEcmp": {"sheet": "Var", "p": "Z9999", "mapping":"bgp_ecmp", "defaultValue": "8"},
+    "p2pIpv4Pool": {"sheet": "Var", "p": "Z9999", "mapping":"p2p_ipv4_pool", "defaultValue": "100.100.0.0/30"},
+    "macAging": {"sheet": "Var", "p": "B18", "mapping":"mac_aging", "defaultValue": "1"},
+    "arpAging": {"sheet": "Var", "p": "B19", "mapping":"arp_aging", "defaultValue": "1"},
+    "p2pSubnet": {"sheet": "Var", "p": "E17", "mapping":"p2p_subnet", "defaultValue": "30"},
+    "ansibleIp": {"sheet": "Var", "p": "B23", "mapping":"ansible_ip", "defaultValue": "192.168.22.251"},
+    "eosVersion": {"sheet": "Var", "p": "B24", "mapping":"eos_version", "defaultValue": "4.27.4M"}
+  },
+  "spine": {
+    "sheet": "SwitchIPInfo",
+    "prefix": "D1-Spine",
+    "props": {
+      "id": {
+        "col": "A"
+      },
+      "hostname": {
+        "col": "B"
+      },
+      "bgp": {
+        "name": "bgp_as",
+        "col": "C",
+        "defaultValue": "65000"
+      },
+      "loopback0": {
+        "col": "D"
+      },
+      "loopback1": {
+        "col": "E"
+      },
+      "mgmt": {
+        "col": "I"
+      }
+    }
+  },
+  "leaf": {
+      "sheet": "SwitchIPInfo",
+      "prefix": "D1-Leaf|D1-BL",
+      "props": {
+        "id": {
+          "col": "A"
+        },
+        "hostname": {
+          "col": "B"
+        },
+        "bgp": {
+          "name": "bgp_as",
+          "col": "C",
+          "defaultValue": "65000"
+        },
+        "loopback0": {
+          "col": "D"
+        },
+        "loopback1": {
+          "col": "E"
+        },
+        "mgmt": {
+          "col": "I"
+        }
+    }
+  },
+  "pd": {
+    "switchIpInfo": {
+      "sheetName": "SwitchIPInfo",
+      "header": 1,
+      "hostName": "HOSTNAME",
+      "mgmt": "MGMT",
+      "loopback0": "Loopback0",
+      "loopback1": "Loopback1",
+      "bgpAsn": "BGP_ASN",
+      "type": "Type",
+      "id": "ID"
+    },
+    "portMap": {
+      "sheetName": "Portmap",
+      "header": 1,
+      "spine": "Start",
+      "spinePort": "S_Port",
+      "spineIp": "S_IP",
+      "leaf": "End",
+      "leafPort": "E_Port",
+      "leafIp": "E_IP"
+    }
+  }
+}

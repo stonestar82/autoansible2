@@ -1,0 +1,10 @@
+interface Loopback0
+	description RouterID_EVPN
+	ip address {{ SWITCH.LOOPBACK0 }}/32
+!
+ip prefix-list Loopback
+	seq 10 permit 1.1.1.0/24 eq 32
+!
+route-map Loopback permit 10
+	match ip address prefix-list Loopback
+!

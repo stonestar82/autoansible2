@@ -1,0 +1,50 @@
+! terminal length 값이 ansible로 처음 배포되면 switch에 적용은 되나 ansible 동작은 비정상 종료됨 
+! terminal length {{ TERMINAL_LENGTH }}
+terminal width {{ TERMINAL_WIDTH }}
+!
+! 4.23.1 부터 MTU 디폴트 변경 가능
+! EVE-NG에서는 기본 IP MTU 인 1500 을 사용
+! interface defaults
+!   mtu 9214
+!
+logging buffered {{ LOGGIN_BUFFERED }}
+logging console informational
+logging monitor informational
+logging synchronous level all
+logging format timestamp traditional
+!
+spanning-tree mode {{ SPANNING_TREE_MODE }}
+!
+aaa authorization exec default local none
+{%if ADMIN_USER_NAME != "" and ADMIN_USER_PW != "" %}
+!
+username {{ ADMIN_USER_NAME }} privilege {{ ADMIN_PRIVILEGE }} secret {{ ADMIN_USER_PW }}
+{%endif%}
+!
+clock timezone {{ TIMEZONE }}
+!
+arp aging timeout default {{ ARP_AGING }}
+!
+mac address-table aging-time {{ MAC_AGING }}
+!
+ip routing
+!
+banner login
+*******************************************
+GlobalTelecom and Arista Networks 
+*******************************************
+EOF
+!
+router bfd
+	interval 1200 min-rx 1200 multiplier 3 default
+!
+! 개인적인 스크립트 사용
+alias gt bash python /mnt/flash/min-20.06.17.py %1
+!
+management api http-commands
+	no shutdown
+	vrf {{ MGMT_VRF }}
+		no shutdown
+!
+end
+

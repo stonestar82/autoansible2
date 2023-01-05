@@ -1,0 +1,165 @@
+hosts:
+  D1-Leaf-01:
+    HOSTNAME: D1-Leaf-01
+    HOST_IP: 192.168.22.193
+    LOOPBACK0: 1.1.1.1
+    LOOPBACK1: 2.2.2.1/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.1.2/30
+    - ETHERNET: Et2
+      IP: 100.102.1.2/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000.1
+    ID: 1
+    TYPE: Leaf
+    P2P_SUBNET: 30
+  D1-Leaf-02:
+    HOSTNAME: D1-Leaf-02
+    HOST_IP: 192.168.22.194
+    LOOPBACK0: 1.1.1.2
+    LOOPBACK1: 2.2.2.2/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.2.2/30
+    - ETHERNET: Et2
+      IP: 100.102.2.2/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000.2
+    ID: 2
+    TYPE: Leaf
+    P2P_SUBNET: 30
+  D1-Leaf-03:
+    HOSTNAME: D1-Leaf-03
+    HOST_IP: 192.168.22.195
+    LOOPBACK0: 1.1.1.3
+    LOOPBACK1: 2.2.2.3/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.3.2/30
+    - ETHERNET: Et2
+      IP: 100.102.3.2/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000.3
+    ID: 3
+    TYPE: Leaf
+    P2P_SUBNET: 30
+  D1-Leaf-04:
+    HOSTNAME: D1-Leaf-04
+    HOST_IP: 192.168.22.196
+    LOOPBACK0: 1.1.1.4
+    LOOPBACK1: 2.2.2.4/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.4.2/30
+    - ETHERNET: Et2
+      IP: 100.102.4.2/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000.4
+    ID: 4
+    TYPE: Leaf
+    P2P_SUBNET: 30
+  D1-BL-01:
+    HOSTNAME: D1-BL-01
+    HOST_IP: 192.168.22.197
+    LOOPBACK0: 1.1.1.201
+    LOOPBACK1: 2.2.2.201/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.201.2/30
+    - ETHERNET: Et2
+      IP: 100.102.201.2/30
+    ETC_PORTS:
+      IP: 192.168.0.1/30
+      INTERFACES:
+      - ETHERNET: Et7
+      - ETHERNET: Et8
+    BGP_ASN: 65000.201
+    ID: 201
+    TYPE: BL
+    P2P_SUBNET: 30
+  D1-BL-02:
+    HOSTNAME: D1-BL-02
+    HOST_IP: 192.168.22.198
+    LOOPBACK0: 1.1.1.202
+    LOOPBACK1: 2.2.2.202/32
+    PERMIT_IP: 2.2.2.0/24
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.202.2/30
+    - ETHERNET: Et2
+      IP: 100.102.202.2/30
+    ETC_PORTS:
+      IP: 192.168.0.2/30
+      INTERFACES:
+      - ETHERNET: Et7
+      - ETHERNET: Et8
+    BGP_ASN: 65000.202
+    ID: 202
+    TYPE: BL
+    P2P_SUBNET: 30
+  D1-Spine-01:
+    HOSTNAME: D1-Spine-01
+    HOST_IP: 192.168.22.191
+    LOOPBACK0: 1.1.1.251
+    LOOPBACK1: ''
+    PERMIT_IP: ''
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.101.1.1/30
+    - ETHERNET: Et2
+      IP: 100.101.2.1/30
+    - ETHERNET: Et3
+      IP: 100.101.3.1/30
+    - ETHERNET: Et4
+      IP: 100.101.4.1/30
+    - ETHERNET: Et5
+      IP: 100.101.201.1/30
+    - ETHERNET: Et6
+      IP: 100.101.202.1/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000
+    ID: 251
+    TYPE: Spine
+    P2P_SUBNET: 30
+  D1-Spine-02:
+    HOSTNAME: D1-Spine-02
+    HOST_IP: 192.168.22.192
+    LOOPBACK0: 1.1.1.252
+    LOOPBACK1: ''
+    PERMIT_IP: ''
+    INTERFACES:
+    - ETHERNET: Et1
+      IP: 100.102.1.1/30
+    - ETHERNET: Et2
+      IP: 100.102.2.1/30
+    - ETHERNET: Et3
+      IP: 100.102.3.1/30
+    - ETHERNET: Et4
+      IP: 100.102.4.1/30
+    - ETHERNET: Et5
+      IP: 100.102.201.1/30
+    - ETHERNET: Et6
+      IP: 100.102.202.1/30
+    ETC_PORTS:
+      IP: ''
+      INTERFACES: []
+    BGP_ASN: 65000
+    ID: 252
+    TYPE: Spine
+    P2P_SUBNET: 30

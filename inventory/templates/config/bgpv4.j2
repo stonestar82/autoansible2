@@ -1,0 +1,28 @@
+router bgp {{ SWITCH.BGP_ASN }}
+	bgp asn notation asdot
+	router-id {{ SWITCH.LOOPBACK0 }}
+	no bgp default ipv4-unicast
+	maximum-paths 8 ecmp 8
+{%if SWITCH.TYPE == "Spine"%}
+	bgp listen range 100.64.0.0/10 peer-group UNDERLAY peer-filter Leaf-ASs
+{%endif%}
+	!
+	neighbor UNDERLAY peer group
+	neighbor UNDERLAY send-community
+	!
+{%if SWITCH.TYPE == "Leaf" or SWITCH.TYPE == "BL"%}
+	neighbor UNDERLAY remote-as 65000
+	neighbor 100.101.{{ SWITCH.ID }}.1 peer group UNDERLAY
+	neighbor 100.101.{{ SWITCH.ID }}.1 description Spine-01
+	neighbor 100.102.{{ SWITCH.ID }}.1 peer group UNDERLAY
+	neighbor 100.102.{{ SWITCH.ID }}.1 description Spine-02
+{%endif%}
+	redistribute connected route-map Loopback
+	!
+	address-family ipv4
+		neighbor UNDERLAY activate
+	!
+{%if SWITCH.TYPE == "Spine"%}
+peer-filter Leaf-ASs
+	10 match as-range 1-4294967295 result accept
+{%endif%}

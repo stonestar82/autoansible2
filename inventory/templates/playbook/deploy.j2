@@ -1,0 +1,14 @@
+- name: Configuration deployment with EAPI
+  hosts: {{ fabricName }}
+  gather_facts: false
+  
+  tasks:
+    - name: {{ session }} cfg 배포
+      eos_config:
+        src: "./inventory/config/{{ inventoryHostname }}.cfg"
+        replace: {{ replaceType }}
+        save_when: modified
+        backup: "{{ runningConfigBackup }}"
+        backup_options:
+          filename: "{{ session }}_{{ runningConfigBackupFileName }}"
+          dir_path: "{{ runningConfigBackupDir }}"

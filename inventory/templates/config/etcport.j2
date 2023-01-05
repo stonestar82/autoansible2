@@ -1,0 +1,16 @@
+{%if SWITCH.ETC_PORTS.INTERFACES%}
+{%for INTERFACE in SWITCH.ETC_PORTS.INTERFACES %}
+!
+interface {{ INTERFACE.ETHERNET }}
+	channel-group 1000 mode active
+{%endfor%}
+!
+interface Port-Channel1000
+	switchport mode trunk
+!
+vlan 4093
+!
+interface Vlan4093
+	ip address {{ SWITCH.ETC_PORTS.IP }}
+!
+{%endif%}

@@ -1,0 +1,37 @@
+## terminal length
+TERMINAL_LENGTH: 40
+TERMINAL_WIDTH: 200
+
+## spanning-tree mode mstp
+SPANNING_TREE_MODE: none
+
+## clock timezone Asia/Seoul
+TIMEZONE: Asia/Seoul
+
+## logging
+LOGGIN_BUFFERED: 1000
+
+## vrf
+MGMT_VRF: MGMT
+MGMT_INTERFACE: Management1
+MGMT_GW: 192.168.22.1
+
+## agin
+ARP_AGING: 300
+MAC_AGING: 300
+
+## admin
+ADMIN_USER_NAME: admin
+ADMIN_USER_PW: admin
+ADMIN_PRIVILEGE: 15
+
+## Peform config backup before config replace
+eos_config_deploy_eapi_pre_running_config_backup: yes
+
+## config dir
+config_gen_dir: './inventory/config'
+config_template_dir: './inventory/templates/config'
+
+## Backup directories path and filenames
+pre_running_config_backup_filename: "{{ inventory_hostname }}_{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}.cfg"
+pre_running_config_backup_dir: './inventory/config_backup'

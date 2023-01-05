@@ -1,0 +1,16 @@
+---
+- name: {{ session }} cfg 생성
+  hosts: {{ fabricName }}
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: 변수 재정의
+      ansible.builtin.set_fact:
+        SWITCH: "{{ setFacsSwitch }}"
+
+    - name: cfg 생성
+      template:
+        src: '{{ configTempateSrc }}/{{ session }}.j2'
+        dest: '{{ configGenDest }}.cfg'

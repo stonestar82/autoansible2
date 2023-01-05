@@ -1,0 +1,13 @@
+{%if SWITCH.LOOPBACK1 != ""%}
+interface Loopback1
+	description VTEP
+	ip address {{ SWITCH.LOOPBACK1 }}
+!
+interface Vxlan1
+	vxlan source-interface Loopback1
+!
+ip prefix-list Loopback
+	seq 20 permit {{ SWITCH.PERMIT_IP }} eq 32
+!
+{%endif%}
+

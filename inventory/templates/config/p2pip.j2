@@ -1,0 +1,6 @@
+{%for INTERFACE in SWITCH.INTERFACES %}
+!
+interface {{ INTERFACE.ETHERNET }}
+	no switchport
+	ip address {{ INTERFACE.IP }}
+{%endfor%}

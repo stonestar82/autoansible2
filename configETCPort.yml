@@ -1,0 +1,16 @@
+---
+- name: etcport cfg 생성
+  hosts: D1
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: 변수 재정의
+      ansible.builtin.set_fact:
+        SWITCH: "{{ hostvars[inventory_hostname]['hosts'][inventory_hostname] }}"
+
+    - name: cfg 생성
+      template:
+        src: '{{ config_template_dir }}/etcport.j2'
+        dest: '{{ config_gen_dir }}/{{ inventory_hostname }}.cfg'

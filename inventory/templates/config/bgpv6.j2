@@ -1,0 +1,29 @@
+router bgp {{ SWITCH.BGP_ASN }}
+  bgp asn notation asdot
+  router-id 1.1.1.{{ SWITCH.ID }}
+  no bgp default ipv4-unicast
+  maximum-paths 8 ecmp 8
+{%if SWITCH.TYPE == "Spine"%}
+  bgp listen range fe80::/10 peer-group UNDERLAY peer-filter Leaf-Ass
+  !
+  neighbor UNDERLAY peer group
+  neighbor UNDERLAY send-community
+{%endif%}
+{%if SWITCH.TYPE == "Leaf" or SWITCH.TYPE == "BL"%}
+  !
+{%  for INTERFACE in SWITCH.INTERFACES %}
+  neighbor interface {{ INTERFACE.ETHERNET }} peer-group UNDERLAY remote-as 65000
+{%  endfor%}
+{%endif%}
+  !
+  redistribute connected route-map Loopback
+  !
+  address-family ipv4
+    neighbor UNDERLAY activate
+    neighbor UNDERLAY next-hop address-family ipv6 originate
+!
+ip routing ipv6 interfaces
+!
+ipv6 unicast-routing
+!
+

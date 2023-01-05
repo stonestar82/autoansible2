@@ -1,0 +1,37 @@
+## terminal length
+TERMINAL_LENGTH: {{ TERMINAL_LENGTH }}
+TERMINAL_WIDTH: {{ TERMINAL_WIDTH }}
+
+## spanning-tree mode mstp
+SPANNING_TREE_MODE: {{ SPANNING_TREE_MODE }}
+
+## clock timezone Asia/Seoul
+TIMEZONE: {{ TIMEZONE }}
+
+## logging
+LOGGIN_BUFFERED: {{ LOGGIN_BUFFERED }}
+
+## vrf
+MGMT_VRF: {{ MGMT_VRF }}
+MGMT_INTERFACE: {{ MGMT_INTERFACE }}
+MGMT_GW: {{ MGMT_GW }}
+
+## agin
+ARP_AGING: {{ ARP_AGING }}
+MAC_AGING: {{ MAC_AGING }}
+
+## admin
+ADMIN_USER_NAME: {{ ADMIN_USER_NAME }}
+ADMIN_USER_PW: {{ ADMIN_USER_PW }}
+ADMIN_PRIVILEGE: {{ ADMIN_PRIVILEGE }}
+
+## Peform config backup before config replace
+eos_config_deploy_eapi_pre_running_config_backup: yes
+
+## config dir
+config_gen_dir: './inventory/config'
+config_template_dir: './inventory/templates/config'
+
+## Backup directories path and filenames
+pre_running_config_backup_filename: "{{ BACKUP_FILENAME }}.cfg"
+pre_running_config_backup_dir: './inventory/config_backup'
